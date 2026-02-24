@@ -1,0 +1,61 @@
+databaseChangeLog:
+  - changeSet:
+      id: init
+      author: property-view
+      changes:
+
+        - createTable:
+            tableName: hotel
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: CLOB
+              - column:
+                  name: brand
+                  type: VARCHAR(255)
+              - column:
+                  name: house_number
+                  type: INT
+              - column:
+                  name: street
+                  type: VARCHAR(255)
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  name: country
+                  type: VARCHAR(255)
+              - column:
+                  name: post_code
+                  type: VARCHAR(20)
+              - column:
+                  name: phone
+                  type: VARCHAR(50)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: check_in
+                  type: VARCHAR(10)
+              - column:
+                  name: check_out
+                  type: VARCHAR(10)
+
+        - createTable:
+            tableName: hotel_amenity
+            columns:
+              - column:
+                  name: hotel_id
+                  type: BIGINT
+              - column:
+                  name: amenity
+                  type: VARCHAR(255)
