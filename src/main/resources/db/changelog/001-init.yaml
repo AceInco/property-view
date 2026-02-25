@@ -16,12 +16,16 @@ databaseChangeLog:
               - column:
                   name: name
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false
               - column:
                   name: description
                   type: CLOB
               - column:
                   name: brand
                   type: VARCHAR(255)
+                  constraints:
+                    nullable: false
               - column:
                   name: house_number
                   type: INT
