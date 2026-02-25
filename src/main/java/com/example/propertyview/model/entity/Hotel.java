@@ -37,6 +37,7 @@ public class Hotel {
     @Embedded
     private ArrivalTime arrivalTime;
 
+    @Builder.Default
     @ElementCollection
     @CollectionTable(name = "hotel_amenity",
             joinColumns = @JoinColumn(name = "hotel_id"))

@@ -16,6 +16,8 @@ public interface HotelMapper {
 
     HotelFullDto toFullDto(Hotel hotel);
 
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "amenities", ignore = true)
     Hotel toEntity(CreateHotelDto dto);
 
     default String formatAddress(Hotel hotel) {

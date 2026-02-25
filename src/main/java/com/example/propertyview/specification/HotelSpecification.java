@@ -1,6 +1,7 @@
 package com.example.propertyview.specification;
 
 import com.example.propertyview.model.entity.Hotel;
+import jakarta.persistence.criteria.Join;
 import org.springframework.data.jpa.domain.Specification;
 
 import jakarta.persistence.criteria.Predicate;
@@ -26,16 +27,30 @@ public class HotelSpecification {
                         "%" + name.toLowerCase() + "%"));
 
             if (brand != null)
-                predicates.add(cb.equal(root.get("brand"), brand));
+                predicates.add(cb.equal(
+                        cb.lower(root.get("brand")),
+                        brand.toLowerCase()
+                ));
 
             if (city != null)
-                predicates.add(cb.equal(root.get("address").get("city"), city));
+                predicates.add(cb.equal(
+                        cb.lower(root.get("address").get("city")),
+                        city.toLowerCase()
+                ));
 
             if (country != null)
-                predicates.add(cb.equal(root.get("address").get("country"), country));
+                predicates.add(cb.equal(
+                        cb.lower(root.get("address").get("country")),
+                        country.toLowerCase()
+                ));
 
-            if (amenity != null)
-                predicates.add(cb.isMember(amenity, root.get("amenities")));
+            if (amenity != null) {
+                Join<Hotel, String> join = root.join("amenities");
+                predicates.add(cb.equal(
+                        cb.lower(join),
+                        amenity.toLowerCase()
+                ));
+            }
 
             return cb.and(predicates.toArray(new Predicate[0]));
         };
