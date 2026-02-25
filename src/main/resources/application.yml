@@ -1,3 +1,10 @@
+# ===============================
+# Database configuration
+# ===============================
+# Current DB: H2.
+# To switch to another database (e.g. PostgreSQL or MySQL),
+# change the datasource URL, driver and add corresponding dependency.
+# Liquibase will automatically apply schema migrations.
 server:
   port: 8092
 
@@ -7,6 +14,15 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+
+# Example PostgreSQL configuration:
+#
+# spring:
+#   datasource:
+#     url: jdbc:postgresql://localhost:5432/propertyview
+#     username: postgres
+#     password: postgres
+#     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
